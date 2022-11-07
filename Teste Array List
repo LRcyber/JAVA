@@ -1,0 +1,44 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package teste;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author User
+ */
+public class Teste {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        ArrayList<Pessoa> listaDePessoas = new ArrayList<>();
+        Pessoa beatriz = new Pessoa();
+        Pessoa brenda = new Pessoa();
+        Pessoa joana = new Pessoa();
+        beatriz.setNome("Beatriz");
+        beatriz.setIdade(16);
+        brenda.setNome("Brenda");
+        brenda.setIdade(24);
+        joana.setNome("Joana");
+        joana.setIdade(30);
+        
+        listaDePessoas.add(beatriz);
+        listaDePessoas.add(brenda);
+        listaDePessoas.add(joana);
+
+
+        for (int i=0; i<listaDePessoas.size(); i++){
+           System.out.println("Nome: "+listaDePessoas.get(i).getNome());
+           System.out.println("idade:" + listaDePessoas.get(i).getIdade());
+           System.out.println ("\n");
+        }
+       
+    }
+    
+}
