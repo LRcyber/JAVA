@@ -1,0 +1,34 @@
+
+package array_vetor;
+
+import java.util.ArrayList;
+
+class Pessoa {
+    public int idade;
+    public String nome;
+    ArrayList<Pessoa> pessoas;
+
+    public Pessoa(int idade, String nome) {
+        this.idade = idade;
+        this.nome = nome;
+        this.pessoas = new ArrayList<>();
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+  public  ArrayList<Pessoa> addLista() {
+        this.pessoas.add(new Pessoa( getIdade(), getNome() )  );
+        return this.pessoas;
+    }
+     
+}
