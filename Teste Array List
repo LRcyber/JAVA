@@ -1,44 +1,65 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package teste;
+package array_vetor;
 
 import java.util.ArrayList;
+import javax.swing.*;
 
-/**
- *
- * @author User
- */
-public class Teste {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        ArrayList<Pessoa> listaDePessoas = new ArrayList<>();
-        Pessoa beatriz = new Pessoa();
-        Pessoa brenda = new Pessoa();
-        Pessoa joana = new Pessoa();
-        beatriz.setNome("Beatriz");
-        beatriz.setIdade(16);
-        brenda.setNome("Brenda");
-        brenda.setIdade(24);
-        joana.setNome("Joana");
-        joana.setIdade(30);
+public class Array_vetor {
+    JFrame frame;   
+    JTextField campoidade, camponome;
+    JTextArea area1;
+    int j= -1;
+    ArrayList<Pessoa> aluno;
+    
+    public Array_vetor() {
+        frame = new JFrame("Teste GUI");
+        frame.setSize(600,500);
+        campoidade = new JTextField();
+        camponome = new JTextField();
+        area1 = new JTextArea();
+        JLabel label1 = new JLabel("Digitar Idade");
+        JLabel label2 = new JLabel("Digitar Nome");
+        JButton botao1 = new JButton("Incluir");
         
-        listaDePessoas.add(beatriz);
-        listaDePessoas.add(brenda);
-        listaDePessoas.add(joana);
-
-
-        for (int i=0; i<listaDePessoas.size(); i++){
-           System.out.println("Nome: "+listaDePessoas.get(i).getNome());
-           System.out.println("idade:" + listaDePessoas.get(i).getIdade());
-           System.out.println ("\n");
-        }
-       
+       // .addActionListener(e -> LimparText1() );
+        
+        botao1.addActionListener(e -> botaolistar() );
+        label1.setBounds(50, 70, 250, 40);
+        campoidade.setBounds(50, 100, 250, 30);
+        label2.setBounds(310, 70, 250, 40);
+        camponome.setBounds(300, 100, 250, 30);
+        area1.setBounds(50, 200, 250, 140);
+        botao1.setBounds(50, 400, 100, 40);
+        frame.add(campoidade); frame.add(camponome); frame.add(label1); frame.add(area1); frame.add(botao1);
+        frame.add(label2);
+        frame.add(area1);
+        frame.setLayout(null);
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
+        frame.setVisible(true);
     }
     
+   
+    
+    public void listarDado(ArrayList<Pessoa> aluno) {
+        j++;
+        for (int i = 0; i <  aluno.size(); i++) {
+            area1.insert(String.valueOf( j ), area1.getCaretPosition());
+            area1.insert(" - ", area1.getCaretPosition());
+            area1.insert( String.valueOf( aluno.get(i).getIdade()  ) ,    area1.getCaretPosition() );
+            area1.insert(" - ", area1.getCaretPosition());
+            area1.insert( aluno.get(i).getNome(), area1.getCaretPosition() );
+             area1.append("\n");
+        }
+    }
+    
+    public void botaolistar() {
+        Pessoa pessoa = new Pessoa(Integer.parseInt(campoidade.getText() ), camponome.getText() );
+        aluno = pessoa.addLista();
+        listarDado(aluno);
+        campoidade.setText(""); camponome.setText("");
+    }
+
+    public static void main(String[] args) {
+         new Array_vetor();       
+    }
 }
